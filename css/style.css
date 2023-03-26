@@ -1,0 +1,329 @@
+:root{
+    --skygge: 0.2vh 0.2vh 0.5vh 0 rgba(0,0,0,0.25);
+    --gronn: #006600;
+    --svart: #000;
+    --hvit: #eee;
+    --graa: #444;
+    --roed: #a00;
+}
+
+.lightMode{
+    --skygge: 0.2vh 0.2vh 0.5vh 0 rgba(0,0,0,0.25);
+    --gronn: #fff;
+    --svart: #000;
+    --hvit: #111;
+    --graa: #fff;
+    --roed: #f33;
+}
+
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Lato', sans-serif;
+    background-color:var(--graa);
+    color: var(--hvit);
+    font-size: 4vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+}
+h4{
+    font-family: 'Staatliches', cursive;
+}
+h5{
+    font-family: 'Staatliches', cursive;
+}
+aside li#fantasy_btn,
+#fantasy h3{
+    font-family: 'Chicle', cursive;
+    font-size: 1.3em;
+}
+aside li#scifi_btn,
+#scifi h3{
+    font-family: 'Audiowide', cursive;
+    font-size: 0.8em;
+}
+aside li#darkromance_btn,
+#darkromance h3{
+    font-family: 'Poiret One', cursive;
+}
+aside li#dystopi_btn,
+#dystopi h3{
+    font-family: 'Germania One', cursive;
+    font-size: 1em;
+}
+aside li#spenning_btn,
+#spenning h3{
+    font-family: 'Cabin Sketch', cursive;
+    font-weight: bold;
+}
+aside li#skjønnlitt_btn,
+#skjønnlitt h3{
+    font-family: 'Abril Fatface', cursive;
+}
+aside li#tegneserier_btn,
+#tegneserier h3{
+    font-family: 'Bangers', cursive;
+}
+aside li#nynorskung_btn,
+#nynorskung h3{
+    font-family: 'Almendra Display', cursive;
+    font-weight: bold;
+}
+.ute:after{
+    font-family: 'Lato', sans-serif;
+}
+
+*{
+    -webkit-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+           user-select: none;
+}
+
+/* Sidebar */
+
+aside {
+    position: fixed;
+	width:20vw;
+	height:100vh;
+    background-color: var(--gronn);
+    border-right: 0.1vw solid var(--svart);
+    box-shadow: var(--skygge);
+}
+
+aside ul {
+    height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+aside li {
+	border-bottom:0.1vw solid var(--svart);
+    -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: left;
+	padding:1vw;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    text-align:center;
+}
+
+aside li.active{
+    box-shadow: inset 0vh 0vh 2vh 0.5vh rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
+}
+
+aside li:last-of-type {
+    border-bottom:0;
+}
+
+/* Main */
+
+.genre {
+    margin-left: 20vw;
+    padding: 0 1.8vw;
+}
+.genre h3{
+    text-align: center;
+    padding: 2vh 0;
+    text-align-last: center;
+}
+.collage{
+    text-align: justify;
+    text-align-last: justify;
+}
+.serie .collage{
+    text-align-last: center;
+}
+.Image_Wrapper{
+    display: inline-block;
+    margin:  0.7vh 0.4vw;
+    position: relative;
+    overflow: hidden;
+    border:0.1vw solid var(--svart);
+    box-shadow: var(--skygge);
+    border:1px solid var(--svart);
+}
+.image {
+    margin:0;
+    padding:0;
+    display:inline-block;
+    vertical-align:bottom;
+    opacity:1;
+    -webkit-filter: brightness(1) saturate(1) contrast(1);
+    filter: brightness(1) saturate(1) contrast(1);
+    height: 35vw;
+    max-width: 23vw;
+    pointer-events: none;
+}
+
+/* Utlånt */
+
+.ute:not(.inne) .image{
+    -webkit-filter: blur(0.1vw) grayscale(100%) !important;
+    filter: blur(0.1vw) grayscale(100%) !important;
+    opacity: 0.4!important;
+}
+
+.ute:after{
+    content: "Utlånt";
+    position: absolute;
+    background: var(--roed);
+    padding: 0 1em;
+    bottom: 3vw;
+    right: -4.3vw;
+    transform: rotate(-45deg);
+    border: 1px solid rgba(0,0,0.1);
+}
+
+
+.book .ute:not(.inne) .cover{
+    -webkit-filter: blur(0.1vw) grayscale(50%) !important;
+    filter: blur(0.1vw) grayscale(50%) !important;
+}
+
+.book .ute:after{
+    content: "Utlånt";
+    position: absolute;
+    background: var(--roed);
+    padding: 0 1em;
+    bottom: 3vw;
+    right: -4.3vw;
+    transform: rotate(-45deg);
+    border: 1px solid rgba(0,0,0.1);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 1.5vw;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #777;
+    border: 0.4vw solid var(--graa);
+    border-radius: 5vw;
+}
+
+/* Enkeltbok */
+
+.book{
+    margin-left: 20vw;
+    padding: 0 2vw;
+}
+.book header{
+    padding: .6em 0;
+    text-align: center;
+}
+.book h4{
+    font-weight: bold;
+    text-transform:uppercase;
+    font-size: 1em;
+}
+.book h5 {
+    font-size: .8em;
+}
+.book p,
+.book table {
+    font-size: .8em;
+    padding-bottom: .6em;
+    line-height: 1.4em;
+}
+.book strong {
+    font-weight: bold;
+}
+.book .coverWrapper {
+    float: left;
+    margin-right: 3vw;
+    border:1px solid var(--svart);
+    box-shadow: 0 0 0.5vw 0.1vw var(--graa);
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+.book .cover {
+    width: 30vw;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.book table {
+    clear: both;
+    float: left;
+    margin-top: 0.5em;
+    margin-right: 3vw;
+    border:0.1vw solid var(--svart);
+    width: 30vw;
+}
+.book tr{
+    border:0.1vw solid var(--svart);
+}
+.book th{
+    font-weight: bold;
+    text-align: left;
+    border:0.1vw solid var(--svart);
+    background: rgba(0,0,0,0.1);
+}
+.book td{
+    padding: 0 0.1em;
+    background: rgba(0,0,0,0.1);
+}
+
+.book .exit{
+    float: right;
+    width: 6vw;
+    height: 6vw;
+    border: 0.1vw solid var(--svart);
+    background: #888;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 3.4vw;
+    margin-top: 2vw;
+}
+
+.book .exit img{
+    width: 100%;
+    padding: 10px;
+    pointer-events: none;
+}
+.book .serie {
+    text-align:center;
+    clear: both;
+    padding: 1vh 0;
+}
+.book .serie h5 {
+    text-align:center;
+    text-align-last:center;
+}
+
+/* Footer */
+
+footer{
+    margin-left: 20vw;
+    text-align: center;
+}
