@@ -3,14 +3,14 @@
     include('innstillinger.php');
 
     $serverUrl = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['SERVER_NAME'];
-    // Dangerous directory path
-    $dangerUrl = dirname($_SERVER['PHP_SELF']);
-    // Safe directory path that contains more than we need
-    $safePath = realpath(__DIR__);
-    // Just the part of the path that we need
-    $safeifiedUrlPath = strstr($safePath, $dangerUrl);
-    // The full safe path to our script's directory
-    $baseUrl = $serverUrl . $safeifiedUrlPath;
+
+    $dangerPath = realpath($_SERVER['DOCUMENT_ROOT'] . dirname($_SERVER['PHP_SELF']));
+    if ($dangerPath == __DIR__){
+        $safePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
+        $baseUrl = $serverUrl . $safePath;
+    } else {
+        echo "Warning: Accessing this file is not allowed by the server";
+    }
 
     $lists = array(
         "fantasy" => array(
