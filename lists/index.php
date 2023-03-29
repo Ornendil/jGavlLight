@@ -10,6 +10,7 @@
         $rssurl = '../old/fantasy.xml';
     }
 
+    libxml_set_external_entity_loader(null);
     $rssxml = @simplexml_load_file($rssurl);
     
     @$rssxml->registerXPathNamespace('b', 'http://bibliofil.no/rss-xml-v1.2/');
