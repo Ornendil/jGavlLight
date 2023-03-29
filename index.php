@@ -2,8 +2,16 @@
 
     include('innstillinger.php');
 
-    $baseUrl = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-    
+    $serverUrl = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['SERVER_NAME'];
+    // Dangerous directory path
+    $dangerUrl = dirname($_SERVER['PHP_SELF']);
+    // Safe directory path that contains more than we need
+    $safePath = realpath(__DIR__);
+    // Just the part of the path that we need
+    $safeifiedUrlPath = strstr($safePath, $dangerUrl);
+    // The full safe path to our script's directory
+    $baseUrl = $serverUrl . $safeifiedUrlPath;
+
     $lists = array(
         "fantasy" => array(
             "ccl" => "plass=fantasy",
@@ -37,13 +45,17 @@
             "computer" => "nynorskung"
         ),
     );
+    
+
     foreach($lists as $key => $list) {
         if ($list['ikkePregenerert']) {
             $lists[$key]['json'] = json_decode(file_get_contents($baseUrl . "/lists?ccl=" . $list['ccl']));
         } else {
             $lists[$key]['json'] = json_decode(file_get_contents($baseUrl . "/lists?genre=" . $list['computer']));
         }
-    };
+    }
+
+
 
     echo $twig->render('index.twig', [
         'lists' => $lists,

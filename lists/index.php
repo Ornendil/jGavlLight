@@ -90,6 +90,17 @@
     $decoded = json_decode($json);
     
     if (json_last_error() === JSON_ERROR_NONE) {
-        echo $json;
+        $output = $json;
+    } else {
+        $output = 'Error';
     }
+
+    if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) {
+        // This script is being run directly in the browser
+        echo $output;
+    } else {
+        // This script is being included in another script
+        return $output;
+    }
+
 ?>
