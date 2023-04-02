@@ -30,7 +30,11 @@ function prolongCountDown(){
 function oppdaterSjanger(sjanger) {
     var oldBooks = sjanger.json;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', "lists/?genre=" + sjanger['computer']);
+    if (sjanger.ikkePregenerert == true){
+        xhr.open('GET', "lists/?ccl=" + sjanger.ccl);
+    } else {
+        xhr.open('GET', "lists/?genre=" + sjanger.computer);
+    }
     xhr.onload = function () {
         if (xhr.status === 200) {
             var newBooks = JSON.parse(xhr.responseText);
@@ -39,7 +43,7 @@ function oppdaterSjanger(sjanger) {
             } else {
                 sjanger.json = newBooks;
                 genererSjangerDOM(sjanger);
-                console.log(sjanger["human"] + ' oppdatert');
+                console.log(sjanger.human + ' oppdatert');
             }
         } else {
             console.log('Kan ikke hente data. Statuskode: ' + xhr.status);
