@@ -1,6 +1,7 @@
 {
     "require": {
         "twig/twig": "^3.0",
-        "symfony/serializer": "^6.2"
+        "symfony/serializer": "^6.2",
+        "symfony/yaml": "^6.2"
     }
 }
