@@ -29,7 +29,7 @@ I filen config.yaml setter du data for hver sjanger du vil ha med på skjermen d
         human: Science Fiction
         computer: scifi
 
-* "ccl" er CCL-søker du bruker for å finne frem de riktige bøkene (se [Bibliofil-håndbøkene om CCL](https://dok.bibsyst.no/web/m2/m2-int-sok.html#m2-ccl))
+* "ccl" er CCL-søket du bruker for å finne frem de riktige bøkene (se [Bibliofil-håndbøkene om CCL](https://dok.bibsyst.no/web/m2/m2-int-sok.html#m2-ccl))
 * "human" er det menneske-lesbare navnet på sjangeren
 * "computer" er det maskin-lesbare navnet på sjangeren, og må være det samme som du kalte feeden da du pregenererte den (se [Bibliofil-håndbøkene om RSS-pregenerering](https://dok.bibsyst.no/web/tkstat/rss.html))
 * Nøkkelen kan være hva som helst, men sett den til det samme som "computer" for enkelhets skyld
